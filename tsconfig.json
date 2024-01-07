@@ -2,6 +2,20 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@core/data": [
+        "./dist/core/data"
+      ],
+      "@core/domain": [
+        "./dist/core/domain"
+      ],
+      "@feature/todo-add": [
+        "./dist/feature/todo-add"
+      ],
+      "@feature/todo-list": [
+        "./dist/feature/todo-list"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
