@@ -25,7 +25,18 @@ describe('TodoRepository', () => {
     todoRepository.addTask(task);
     todoRepository.getTodoList().subscribe(tasks => {
         expect(tasks.length).toBe(1);
-        expect(tasks[0]).toBe(task);
+        expect(tasks[0]).toEqual(task);
+    });
+  });
+
+  it('should return the task list', () => {
+    const tasks: TaskModel[] = [{ text: 'Task 1' }, { text: 'Task 2' }];
+    
+    todoRepository.addTask(tasks[0]);
+    todoRepository.addTask(tasks[1]);
+
+    todoRepository.getTodoList().subscribe(taskList => {
+      expect(taskList).toEqual(tasks);
     });
   });
 
