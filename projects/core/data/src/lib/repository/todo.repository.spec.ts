@@ -21,11 +21,11 @@ describe('TodoRepository', () => {
   });
 
   it('should add a task to the task list', () => {
-    const text = 'New task';
-    todoRepository.addTask(text);
+    const task:TaskModel = {text:'New task'};
+    todoRepository.addTask(task);
     todoRepository.getTodoList().subscribe(tasks => {
         expect(tasks.length).toBe(1);
-        expect(tasks[0].text).toBe(text);
+        expect(tasks[0]).toBe(task);
     });
   });
 

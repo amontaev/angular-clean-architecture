@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { TodoRepository } from "../../../data/src/public-api";
-import { filter } from "rxjs";
+import { TaskModel, TodoRepository } from "../../../data/src/public-api";
 
 @Injectable({
     providedIn: 'root'
@@ -9,10 +8,10 @@ export class AddTaskUseCase {
 
     constructor(private todoRepository: TodoRepository) { }
 
-    execute(text:string) {
+    execute(task:TaskModel) {
         this.todoRepository.getTodoList().subscribe(result => {
-            if (!result.find(item => item.text == text)) {
-                this.todoRepository.addTask(text);
+            if (!result.find(item => item.text == task.text)) {
+                this.todoRepository.addTask(task);
             }
         })
     }

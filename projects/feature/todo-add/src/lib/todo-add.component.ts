@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AddTaskUseCase } from '../../../../core/domain/src/public-api';
+import { TaskModel } from '../../../../core/data/src/public-api';
 
 @Component({
   selector: 'lib-todo-add',
@@ -10,12 +11,12 @@ import { AddTaskUseCase } from '../../../../core/domain/src/public-api';
 })
 export class TodoAddComponent {
 
-  task = ''
+  task:TaskModel = {text:''}
 
   constructor(private addTaskUseCase:AddTaskUseCase) {}
 
   onChange(event: Event) {
-    this.task = (event.target as HTMLInputElement).value;
+    this.task.text = (event.target as HTMLInputElement).value;
   }
 
   addTask() {

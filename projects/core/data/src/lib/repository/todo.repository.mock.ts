@@ -12,9 +12,9 @@ export class TodoRepositoryMock extends TodoRepository {
 
   private taskData = this.taskDataSource.asObservable()
 
-  override addTask(text:string): void {
+  override addTask(task:TaskModel): void {
     const currentValue = this.taskDataSource.value;
-    const updatedValue = [...currentValue, {text}];
+    const updatedValue = [...currentValue, {text:task.text}];
     this.taskDataSource.next(updatedValue);
   }
   
